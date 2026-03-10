@@ -13,12 +13,13 @@
   },
   "ResourceModules": {
     "ext.adt.mainpage": {
-      "localBasePath": "",
+      "localBasePath": "resources",
+      "remoteExtPath": "ADTMainpage/resources",
       "styles": [
-        "resources/styles.css"
+        "styles.css"
       ],
       "scripts": [
-        "resources/script.js"
+        "script.js"
       ],
       "dependencies": [
         "mediawiki.util",
