@@ -80,6 +80,7 @@ wfLoadExtension( 'TemplateStyles' );
 wfLoadExtension( 'VisualEditor' );
 wfLoadExtension( 'WikiEditor' );
 
+$wgResourceLoaderDebug = true;
 $wgShowExceptionDetails = true;
 $wgShowDBErrorBacktrace = true;
 $wgDebugLogFile = "/var/www/html/debug.log";
