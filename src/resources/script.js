@@ -19,6 +19,8 @@ window.onload = function() {
  * @returns {void}
  */
 function initArcSlider(sliderElement) {
+    if (!sliderElement) return;
+
     const ACTIVE_SLIDE_CLASS = "arc-slider__slide--active";
     const ACTIVE_NAV_CLASS = "arc-slider__nav-btn--active";
 
@@ -28,6 +30,11 @@ function initArcSlider(sliderElement) {
     const arrowBack = sliderElement.querySelector(".arc-slider__arrow--back");
     const arrowNext = sliderElement.querySelector(".arc-slider__arrow--next");
     const infoElement = sliderElement.querySelector(".arc-slider__info");
+
+    if (slides.length === 0) {
+        console.warn("Arc slider " + sliderElement + ": no slides found");
+        return;
+    }
 
     const defaultInfoText = infoElement ? infoElement.innerText : "";
     let currentIndex = slides.findIndex(slide => slide.classList.contains(ACTIVE_SLIDE_CLASS));
@@ -44,8 +51,8 @@ function initArcSlider(sliderElement) {
         let infoText = null;
         try {
             infoText = navButtons[currentIndex].querySelector("img").alt || null;
-        } catch {
-            // Not all nav buttons may have alt text
+        } catch (error) {
+            console.warn("Error updating info text:", error);
         }
         setInfoText(infoText);
     }
@@ -94,8 +101,13 @@ function initArcSlider(sliderElement) {
  * @returns {void}
  */
 function CopyADTLinkEvent() {
-    let linkADT = document.getElementById("ss14-adt-link");
-    let text_linkADT = linkADT.textContent;
+    const linkADT = document.getElementById("ss14-adt-link");
+    if (!linkADT) {
+        console.warn("ADT link element not found");
+        return;
+    }
+    
+    const text_linkADT = linkADT.textContent;
     linkADT.addEventListener("click", () => CopyOnClick(text_linkADT));
 }
 
@@ -106,6 +118,12 @@ function CopyADTLinkEvent() {
 function GetStatusElements()
 {
     STATUS_ELEMENTS.root = document.getElementById("server-status");
+    
+    if (!STATUS_ELEMENTS.root) {
+        console.warn("Server status root element not found");
+        return;
+    }
+    
     STATUS_ELEMENTS.indicator = STATUS_ELEMENTS.root.querySelector("#indicator");
     STATUS_ELEMENTS.indicator_text = STATUS_ELEMENTS.root.querySelector("#indicator-text");
     STATUS_ELEMENTS.player_count = STATUS_ELEMENTS.root.querySelector("#player-count");
@@ -121,7 +139,12 @@ function GetStatusElements()
  * @returns {Promise<void>}
  */
 async function MainADTServerStatus() {
-    let response
+    if (!STATUS_ELEMENTS.root) {
+        console.warn("Status elements not initialized, skipping status check");
+        return;
+    }
+
+    let response;
 
     try {
         response = await fetch("http://" + MAIN_ADT_SERVER_ADDRESS + "/status");
