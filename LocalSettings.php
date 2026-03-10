@@ -69,6 +69,7 @@ wfLoadSkin( 'Citizen' );
 wfLoadExtension( 'ADTMainpage' );
 
 wfLoadExtension( 'CodeEditor' );
+wfLoadExtension( 'CodeMirror' );
 wfLoadExtension( 'Linter' );
 wfLoadExtension( 'Math' );
 wfLoadExtension( 'ParserFunctions' );
