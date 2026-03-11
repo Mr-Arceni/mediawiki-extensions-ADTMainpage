@@ -127,8 +127,8 @@ function GetStatusElements()
     STATUS_ELEMENTS.indicator = STATUS_ELEMENTS.root.querySelector("#indicator");
     STATUS_ELEMENTS.indicator_text = STATUS_ELEMENTS.root.querySelector("#indicator-text");
     STATUS_ELEMENTS.player_count = STATUS_ELEMENTS.root.querySelector("#player-count");
-    STATUS_ELEMENTS.bunker_status = STATUS_ELEMENTS.root.querySelector("#bunker-status");
-    STATUS_ELEMENTS.bunker_status_text = STATUS_ELEMENTS.root.querySelector("#bunker-status>span");
+    STATUS_ELEMENTS.bunker_status = STATUS_ELEMENTS.root.querySelector("#server-status i.fa-shield-halved");
+    STATUS_ELEMENTS.bunker_status_text = STATUS_ELEMENTS.root.querySelector("#server-status i.fa-shield-halved + span");
     STATUS_ELEMENTS.current_map = STATUS_ELEMENTS.root.querySelector("#current-map");
     STATUS_ELEMENTS.round_duration = STATUS_ELEMENTS.root.querySelector("#round-duration");
     STATUS_ELEMENTS.preset = STATUS_ELEMENTS.root.querySelector("#preset");
