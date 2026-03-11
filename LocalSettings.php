@@ -38,6 +38,7 @@ $wgMainCacheType = CACHE_ACCEL;
 $wgMemCachedServers = [];
 
 $wgEnableUploads = true;
+$wgFileExtensions = [ 'png', 'gif', 'jpg', 'jpeg', 'webp', 'svg'];
 $wgUseImageMagick = true;
 $wgImageMagickConvertCommand = "/usr/bin/convert";
 

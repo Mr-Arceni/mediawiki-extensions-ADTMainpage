@@ -1,3 +1,4 @@
+images/
 db_data/
 *.log
 .docker/
