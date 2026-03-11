@@ -71,6 +71,7 @@ wfLoadExtension( 'ADTMainpage' );
 
 wfLoadExtension( 'CodeEditor' );
 wfLoadExtension( 'CodeMirror' );
+wfLoadExtension( 'FontAwesome' );
 wfLoadExtension( 'Linter' );
 wfLoadExtension( 'Math' );
 wfLoadExtension( 'ParserFunctions' );

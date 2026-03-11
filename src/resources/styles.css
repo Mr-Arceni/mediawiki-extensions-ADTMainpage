@@ -2,12 +2,12 @@
 
 @font-face {
   font-family: "Boxfont_Round";
-  src: url("./assets/fonts/Boxfont Round.ttf") format("truetype");
+  src: url("./fonts/Boxfont Round.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "NotoSans";
-  src: url("./assets/fonts/NotoSans-Regular.ttf") format("truetype");
+  src: url("./fonts/NotoSans-Regular.ttf") format("truetype");
 }
 
 
