@@ -1,8 +1,0 @@
-.gitattributes export-ignore
-.gitignore export-ignore
-docker-compose.yml export-ignore
-Dockerfile export-ignore
-init.sql export-ignore
-LICENSE export-ignore
-LocalSettings.php export-ignore
-README.md export-ignore
