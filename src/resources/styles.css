@@ -153,8 +153,6 @@
 .social-anim::before {
     content: '';
     position: absolute;
-    /*left: -50%;*/
-    /*top: -50%;*/
     width: 100%;
     height: 100%;
     background: linear-gradient(0deg,
@@ -177,13 +175,6 @@
   height: 1em;
   fill: currentColor;
   vertical-align: text-top;
-}
-
-.social .border-icon {
-  position: absolute;
-  font-size: x-large;
-  left: -0.5em;
-  top: 0.7em;
 }
 
 .social > div {
@@ -321,7 +312,7 @@
   box-shadow: hsla(var(--surface-shadow), var(--shadow-strength)) 1px 1px 3px 0px;
 }
 
-.roles-block .arrow {
+.arc-slider__arrow {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -332,7 +323,7 @@
   transition: all 0.05s ease;
 }
 
-.roles-block .arrow:hover {
+.arc-slider__arrow:hover {
   background-color: hsl(var(--color-primary__h), 15%, 25%);
 }
 
@@ -364,28 +355,29 @@
   line-height: 0;
 }
 
-.arc-slider__nav-btn span > a {
+.arc-slider__nav-btn span > span {
   vertical-align: middle;
 }
-.arc-slider__nav-btn span > a > img {
+.arc-slider__nav-btn span > span > img {
   height: 1.2em;
+  width: auto;
   padding: 0 0.25em;
   cursor: pointer;
   filter: contrast(0.4) brightness(0.7);
   transition: all 0.05s cubic-bezier(0, 0, 0.2, 1);
 }
 
-.arc-slider__nav-btn--active span > a > img {
+.arc-slider__nav-btn--active span > span > img {
   cursor: default;
   filter: contrast(1) brightness(1);
   transform: scale(1.1);
 }
 
-.arc-slider__nav-btn:not(.arc-slider__nav-btn--active) span > a > img:hover {
+.arc-slider__nav-btn:not(.arc-slider__nav-btn--active) span > span > img:hover {
   filter: brightness(1.25);
   transform: scale(1.25);
 }
-.arc-slider__nav-btn:not(.arc-slider__nav-btn--active) span > a > img:active {
+.arc-slider__nav-btn:not(.arc-slider__nav-btn--active) span > span > img:active {
   filter: brightness(0.75);
   transform: scale(1.1);
 }
