@@ -38,6 +38,15 @@
   align-items: stretch;
 }
 
+.block-link > a {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  color: transparent;
+}
+
 .mainpage-row {
   display: flex;
   flex-direction: row;
@@ -77,15 +86,6 @@
   display: block;
   height: 50px;
   width: auto;
-}
-
-.mainpage-man-block > a {
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  color: transparent;
 }
 
 .mainpage-man-block:has(a:hover) {
@@ -192,14 +192,6 @@
   align-items: center;
   margin: 4px 8px;
   filter: drop-shadow(0px 0px 2px #ffffff1a) drop-shadow(0px 0px 5px #000);
-}
-
-.social > div a {
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
 }
 
 .social .icon:has(+a:active) {
