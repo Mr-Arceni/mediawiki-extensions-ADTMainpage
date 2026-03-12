@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  mediawiki:
+    build: .
+    ports:
+      - 8080:80
+    volumes:
+      - ./src:/var/www/html/extensions/ADTMainpage
+      - ./LocalSettings.php:/var/www/html/LocalSettings.php
+      - ./images:/var/www/html/images
+    environment:
+      - MW_DOCKER_SHARED_NETWORK=1
+  database:
+    image: mariadb:10.6
+    volumes:
+      - ./db_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      - MARIADB_DATABASE=test_wiki
+      - MARIADB_ROOT_PASSWORD=1111

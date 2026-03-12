@@ -1,0 +1,9 @@
+images/
+node_modules/
+db_data/
+*.log
+.docker/
+.idea/
+package.json
+package-lock.json
+*.zip

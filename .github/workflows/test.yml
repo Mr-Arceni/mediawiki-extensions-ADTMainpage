@@ -1,0 +1,28 @@
+name: Code Quality
+on: [push, pull_request]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+
+      - name: PHP Lint
+        run: find . -name "*.php" -exec php -l {} \;
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run Stylelint
+        run: |
+          npm install eslint stylelint stylelint-config-wikimedia
+          npx stylelint "src/resources/**/*.css"
+          npx eslint "src/resources/**/*.js"

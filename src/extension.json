@@ -1,0 +1,38 @@
+{
+  "name": "ADTMainpage",
+  "version": "0.9.0",
+  "author": "[[User:Mr._Arceni|Mr. Arceni]]",
+  "type": "other",
+  "description": "An extension for the Adventure Time wiki's main page using the Citizen skin.",
+  "license-name": "CC-BY-NC-SA-4.0",
+  "requires": {
+    "MediaWiki": ">= 1.41.0",
+    "skins": {
+      "Citizen": ">= 2.40.2"
+    }
+  },
+  "ResourceModules": {
+    "ext.adt.mainpage": {
+      "localBasePath": "resources",
+      "remoteExtPath": "ADTMainpage/resources",
+      "styles": [
+        "styles.css"
+      ],
+      "scripts": [
+        "script.js"
+      ],
+      "dependencies": [
+        "mediawiki.util",
+        "jquery"
+      ],
+      "targets": [ "desktop", "mobile" ]
+    }
+  },
+  "Hooks": {
+    "BeforePageDisplay": "ADTMainPageHooks::onBeforePageDisplay"
+  },
+  "AutoloadClasses": {
+    "ADTMainPageHooks": "includes/ADTMainPageHooks.php"
+  },
+  "manifest_version": 2
+}
