@@ -210,7 +210,16 @@
 .social .fa-github:has(+a:hover) {
   color: gray;
 }
-.social .icon.boosty:has(+a:hover) {
+
+.social .boosty-icon {
+  font-family: "boosty_icon";
+  line-height: 1;
+}
+
+.social .boosty-icon:before {
+    content: "\E800";
+}
+.social .boosty-icon:has(+a:hover) {
   color: #ff4f00;
 }
 
