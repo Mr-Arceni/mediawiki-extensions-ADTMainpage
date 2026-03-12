@@ -10,6 +10,11 @@
   src: url("./fonts/NotoSans-Regular.ttf") format("truetype");
 }
 
+@font-face {
+    font-family: "boosty_icon";
+    src: url("./fonts/boosty_icon.ttf") format("truetype");
+}
+
 
 :root {
     --surface-shadow: var(--color-primary__h), 50%, 3%;
