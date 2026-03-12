@@ -242,6 +242,6 @@ const CopyOnClick = function(objectText) {
         navigator.clipboard.writeText(objectText);
         alert("Адрес скопирован в буфер обмена!");
     } catch (error) {
-        alert("Неизвестная ошибка при копировании");
+        alert("Неизвестная ошибка при копировании" + error);
     }
 }

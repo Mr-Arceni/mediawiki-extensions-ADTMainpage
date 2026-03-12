@@ -1,3 +1,9 @@
 {
-  "extends": "stylelint-config-wikimedia"
+  "extends": "stylelint-config-wikimedia",
+  "rules": {
+    "@stylistic/indentation": 2,
+    "selector-max-id": null,
+    "time-min-milliseconds": 25,
+    "no-descending-specificity": null
+  }
 }
