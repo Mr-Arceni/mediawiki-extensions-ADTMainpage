@@ -12,3 +12,11 @@ docker-compose up -d
 
 - Логин: `Adt-admin-login`
 - Пароль: `Adt-admin-password`
+
+### Тесты
+В репозитории настроены nodejs `stylelint` и `eslint`
+```bash
+npm install eslint stylelint stylelint-config-wikimedia
+npx stylelint "src/resources/**/*.css"
+npx eslint "src/resources/**/*.js"
+```
