@@ -3,7 +3,7 @@ const STATUS_ELEMENTS = {};
 const FETCH_STATUS_INTERVAL = 1000;
 const FETCH_STATUS_ERROR_INTERVAL = 5000;
 
-window.onload = function() {
+function init() {
     GetStatusElements();
     MainADTServerStatus();
     CopyADTLinkEvent();
@@ -11,6 +11,12 @@ window.onload = function() {
     document.querySelectorAll(".arc-slider").forEach((sliderElement) => {
         initArcSlider(sliderElement);
     });
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+} else {
+    init();
 }
 
 /**
