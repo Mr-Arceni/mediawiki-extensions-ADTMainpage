@@ -3,28 +3,46 @@ namespace MediaWiki\Extension\ADTMainpage;
 
 use ApiBase;
 use MediaWiki\Http\HttpRequestFactory;
+use MediaWiki\Cache\WANObjectCache;
 
 class ApiServerStatus extends ApiBase {
     private $httpRequestFactory;
-    private const $address = '193.164.18.155:1212';
+    private WANObjectCache $cache;
     private const ADDRESS = '193.164.18.155:1212';
 
-    public function __construct( $main, $action, HttpRequestFactory $httpRequestFactory ) {
-        parent::__construct( $main, $action );
+    public function __construct( $query, $moduleName, HttpRequestFactory $httpRequestFactory, WANObjectCache $cache ) {
+        parent::__construct( $query, $moduleName );
         $this->httpRequestFactory = $httpRequestFactory;
+        $this->cache = $cache;
     }
 
-    public function execute() {
-        $url = 'http://'.self::ADDRESS.'/status';
+public function execute() {
+        $cacheKey = $this->cache->makeKey( 'ext', 'adtmainpage', 'serverstatus' );
 
-        $request = $this->httpRequestFactory->get( $url, [ 'timeout' => 3 ] );
+        $data = $this->cache->getWithSetCallback(
+            $cacheKey,
+            2,
+            function ( $oldValue, &$ttl, array &$setOpts ) {
+                $url = 'http://'.self::ADDRESS.'/status';
 
-        if ( $request ) {
-            $this->getResult()->addValue( null, 'status_data', json_decode( $request ) );
-        } else {
-            $this->dieWithError( 'Server unavailable' );
-        }
+                $request = $this->httpRequestFactory->create( $url, [ 'method' => 'GET', 'timeout' => 2 ], __METHOD__ );
+                $status = $request->execute();
+
+                if ( $status->isOK() ) {
+                    $decoded = json_decode( $request->getContent(), true );
+                    if ( $decoded ) {
+                        return $decoded;
+                    }
+                }
+
+                return [ 'offline' => true ];
+            }
+        );
+
+        $this->getResult()->addValue( null, $this->getModuleName(), $data );
     }
 
-    public function getAllowedParams() { return []; }
+    public function isReadMode() {
+        return true;
+    }
 }

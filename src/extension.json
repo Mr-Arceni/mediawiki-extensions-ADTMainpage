@@ -1,6 +1,6 @@
 {
   "name": "ADTMainpage",
-  "version": "1.0.3",
+  "version": "2.0.0",
   "author": "[[User:Mr._Arceni|Mr. Arceni]]",
   "type": "other",
   "description": "An extension for the Adventure Time wiki's main page using the Citizen skin.",
@@ -23,9 +23,19 @@
       ],
       "dependencies": [
         "mediawiki.util",
+        "mediawiki.api",
         "jquery"
       ],
       "targets": [ "desktop", "mobile" ]
+    }
+  },
+  "APIModules": {
+    "adtserverstatus": {
+      "class": "MediaWiki\\Extension\\ADTMainpage\\ApiServerStatus",
+      "services": [
+        "HttpRequestFactory",
+        "MainWANObjectCache"
+      ]
     }
   },
   "Hooks": {

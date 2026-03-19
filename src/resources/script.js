@@ -1,4 +1,3 @@
-const MAIN_ADT_SERVER_ADDRESS = "193.164.18.155:1212";
 const STATUS_ELEMENTS = {};
 const FETCH_STATUS_INTERVAL = 1000;
 const FETCH_STATUS_ERROR_INTERVAL = 5000;
@@ -141,7 +140,7 @@ function GetStatusElements()
 }
 
 /**
- * Initiates server monitoring by fetching status from the main ADT server
+ * Initiates server monitoring by fetching status from the local extended MediaWiki API
  * @returns {Promise<void>}
  */
 async function MainADTServerStatus() {
@@ -150,22 +149,25 @@ async function MainADTServerStatus() {
         return;
     }
 
-    let response;
-
     try {
-        response = await fetch("http://" + MAIN_ADT_SERVER_ADDRESS + "/status");
-    }
-    catch (error) {
-        console.error("Error during fetching information from " + MAIN_ADT_SERVER_ADDRESS + " - " + error);
-        OffStatusChange(0);
-    }
+        const api = new mw.Api();
 
-    if (response.ok) {
-        let content = await response.json();
-        OkStatusChange(content);
-    }
-    else {
-        OffStatusChange(response.status);
+        const response = await api.get({
+            action: 'adtserverstatus',
+            format: 'json',
+            formatversion: 2
+        });
+
+        const content = response.adtserverstatus;
+
+        if (content && !content.offline) {
+            OkStatusChange(content);
+        } else {
+            OffStatusChange(500);
+        }
+    } catch (error) {
+        console.error("Error during fetching information via MediaWiki API - ", error);
+        OffStatusChange(0);
     }
 }
 
