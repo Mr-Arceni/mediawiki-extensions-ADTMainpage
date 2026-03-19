@@ -3,7 +3,7 @@ namespace MediaWiki\Extension\ADTMainpage;
 
 use ApiBase;
 use MediaWiki\Http\HttpRequestFactory;
-use MediaWiki\Cache\WANObjectCache;
+use Wikimedia\ObjectCache\WANObjectCache;
 
 class ApiServerStatus extends ApiBase {
     private $httpRequestFactory;
