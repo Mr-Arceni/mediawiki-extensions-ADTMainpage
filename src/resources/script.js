@@ -163,6 +163,9 @@ async function MainADTServerStatus() {
         if (content && !content.offline) {
             OkStatusChange(content);
         } else {
+            if (content && content.error) {
+                console.warn("Server status error:", content.error, content.message || "");
+            }
             OffStatusChange(500);
         }
     } catch (error) {
